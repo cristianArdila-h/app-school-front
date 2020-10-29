@@ -6,6 +6,7 @@ import { SharedModule } from "../shared/shared.module";
 
 import { ReportsComponent } from './reports/reports.component';
 import { PagesComponent } from './pages.component';
+import { MenuComponent } from '../shared/menu/menu.component';
 
 
 
