@@ -9,38 +9,46 @@ const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
 
-  public usuario: any = {};
+export class UserService {
 
   constructor( private http: HttpClient ) { }
 
-  login() {
-    console.log('login')
-    return this.http.get(`${ base_url }/serviciosMercadolibre/test/1`)
+  login(email, password) {
+
+    const body = { email, password };
+    console.log('Body', body);
+    return this.http.post(`${ base_url }/auth/login`,  { email, password })
     .pipe(
       map( (resp: any ) => { 
-        this.usuario = resp;
+        sessionStorage.setItem('token', resp.token);
         return true;
       })
     );
-    // .subscribe((resp) => console.log(resp));
-    
-
   }
 
 
-  validarToken(): Observable<boolean> {
+  validarToken(roles:any) {
     
-    return this.http.get(`${ base_url }/serviciosMercadolibre/test/1`)
+    return this.http.get(`${ base_url }/auth`, {headers: {'x-token': sessionStorage.getItem('token')}})
     .pipe(
-      map( resp => {
-        this.usuario = resp;
-        console.log('token', resp );
-        return true;
-      }),
-      catchError( error => of(false) )
+      map( (resp: any ) => { 
+        console.log('validarToken', resp, roles)
+        return this.validateRol (roles, resp.user);
+      })
     );
+  }
+
+  validateRol(roles:any[], user ) {
+
+    var roleValidate = false;
+    roles.forEach(rolId => {
+      if(rolId == user.rol_id) {
+        roleValidate = true;
+      }
+    });
+
+    return roleValidate;
 
   }
 

@@ -26,7 +26,8 @@ const routes: Routes = [
             { path: 'calendar', component: CalendarComponent, data: {'title': "Calendar" } }, 
             { path: 'subject', component: SubjectComponent, data: {'title': "Subject" } }, 
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-        ]
+        ],
+        data: { roles: ["1"] }
     }
 ];
 
