@@ -9,8 +9,6 @@ export class DashboardComponent implements OnInit {
 
   constructor( private userService : UserService ) {
 
-    console.log( 'usuario' , userService.usuario );
-
   }
 
   ngOnInit(): void {

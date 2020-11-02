@@ -16,7 +16,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
 
-    return true;      
+    var response = false;
+
+    return this.userService.validarToken(next.data.roles);     
+
+    
     //return this.userService.validarToken();
 
   }

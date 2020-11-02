@@ -16,7 +16,8 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent, data: {'title': "Dashboard" } },
             { path: 'reports', component: ReportsComponent, data: {'title': "Reports" } }, 
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-        ]
+        ],
+        data: { roles: ["1"] }
     }
 ];
 
