@@ -7,13 +7,23 @@ import { SharedModule } from "../shared/shared.module";
 import { ReportsComponent } from './reports/reports.component';
 import { PagesComponent } from './pages.component';
 import { MenuComponent } from '../shared/menu/menu.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { MessageComponent } from './message/message.component';
+import { SubjectComponent } from './subject/subject.component';
 
 
 
 @NgModule({
   declarations: [
   ReportsComponent,
-  PagesComponent
+  PagesComponent,
+  ProfileComponent,
+  ScheduleComponent,
+  CalendarComponent,
+  MessageComponent,
+  SubjectComponent
 ],
 exports:[
   ReportsComponent,

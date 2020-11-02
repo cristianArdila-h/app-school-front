@@ -1,6 +1,6 @@
 <!-- ========== Left Sidebar Start ========== -->
 <div class="left-side-menu">
-    
+
     <!-- LOGO -->
     <a href="index.html" class="logo text-center logo-light">
         <span class="logo-lg">
@@ -26,28 +26,37 @@
         <!--- Sidemenu -->
         <ul class="metismenu side-nav">
 
-            <li class="side-nav-title side-nav-item">Navigation</li>
+            <li class="side-nav-title side-nav-item">Navegación</li>
 
             <li class="side-nav-item">
-                <a href="" class="side-nav-link">
+                <a class="side-nav-link" [routerLink]="['/dashboard']">
                     <i class="uil-home-alt"></i>
-                    <span class="badge badge-success float-right">4</span>
                     <span> Dashboards </span>
                 </a>
-                <ul class="side-nav-second-level" aria-expanded="false">
-                    <li>
-                        <a href="dashboard-analytics.html">Analytics</a>
-                    </li>
-                    <li>
-                        <a href="dashboard-crm.html">CRM</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Ecommerce</a>
-                    </li>
-                    <li>
-                        <a href="dashboard-projects.html">Projects</a>
-                    </li>
-                </ul>
+                <a class="side-nav-link" [routerLink]="['/profile']">
+                    <i class="dripicons-user"></i>
+                    <span> Perfil </span>
+                </a>
+                <a class="side-nav-link" [routerLink]="['/schedule']">
+                    <i class="uil-clock"></i>
+                    <span> Horario </span>
+                </a>
+                <a class="side-nav-link" [routerLink]="['/calendar']">
+                    <i class="uil-calender"></i>
+                    <span> Calendario </span>
+                </a>
+                <a class="side-nav-link" [routerLink]="['/subject']">
+                    <i class="mdi mdi-message-processing-outline"></i>
+                    <span> Materias </span>
+                </a>
+                <a class="side-nav-link" [routerLink]="['/message']">
+                    <i class="mdi mdi-message-processing-outline"></i>
+
+                    <span class="badge badge-danger float-right">4</span>
+                    <span> Mensajes </span>
+                </a>
+
+
             </li>
 
             <li class="side-nav-title side-nav-item">Apps</li>
@@ -100,7 +109,7 @@
                 </ul>
             </li>
 
-            
+
 
         </ul>
 
