@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-7 mt-1">
+        {{ firstValue }} - {{ secondValue }} de {{ lengt }}
+    </div> <!-- end col-->
+    <div class="col-5">
+        <div class="btn-group float-right">
+            <button (click)="decrease()" [disabled]="!previousActive()" type="button" [ngClass]="{'btn-info': previousActive(), 'btn-light': !previousActive()}" class="btn  btn-sm"><i class="mdi mdi-chevron-left"></i></button>
+            <button (click)="increase()"  [disabled]="!nextActivate()" type="button"  [ngClass]="{'btn-info': nextActivate(), 'btn-light': !nextActivate()}" class="btn btn-sm"><i class="mdi mdi-chevron-right"></i></button>
+        </div>
+    </div> <!-- end col-->
+</div>

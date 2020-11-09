@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { UserService } from "../../services/user.service";
-import { tap } from 'rxjs/operators';
-import { ThrowStmt } from '@angular/compiler';
+import {Router} from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,25 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class LoginComponent {
 
-  user: string;
-  password: string;
+  error;
+  loginForm = new FormGroup({
+    user: new FormControl(''),
+    password: new FormControl(''),
+  });
 
-  constructor( private userService: UserService) {}
+  constructor( private userService: UserService
+              ,private router:Router) {}
 
   login() {
 
-    this.userService.login('admin@gmail.com', '123456').subscribe(res => console.log('reas', res));
+    this.userService.login(this.loginForm.get('user').value, this.loginForm.get('password').value)
+      .subscribe(res => {
+        if(res.ok === false) {
+          this.error = 'Usuario o Contraseña incorrectos. Comprueba los datos y vuelve a intentarlo.';
+        } else {
+          this.router.navigate(['dashboard']);
+        }
+      });
 
   }
 

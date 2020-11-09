@@ -12,6 +12,8 @@ const base_url = environment.base_url;
 
 export class UserService {
 
+  user:any;
+
   constructor( private http: HttpClient ) { }
 
   login(email, password) {
@@ -21,35 +23,48 @@ export class UserService {
     return this.http.post(`${ base_url }/auth/login`,  { email, password })
     .pipe(
       map( (resp: any ) => { 
-        sessionStorage.setItem('token', resp.token);
-        return true;
-      })
+        if(resp.ok === true) {
+          sessionStorage.setItem('token', resp.token);
+        }
+        return resp;
+      }),
     );
   }
 
 
-  validarToken(roles:any) {
-    
-    return this.http.get(`${ base_url }/auth`, {headers: {'x-token': sessionStorage.getItem('token')}})
+  validarToken(roles:any) : Observable<boolean> {
+    return this.http.get(`${ base_url }/auth`, {headers: {'x-token': this.token }})
     .pipe(
       map( (resp: any ) => { 
-        console.log('validarToken', resp, roles)
+        console.log('Entra', resp, 'roles', roles)
+
+        this.user = resp.user;
         return this.validateRol (roles, resp.user);
-      })
+      }),
+      catchError( error => of(false) )
     );
   }
 
   validateRol(roles:any[], user ) {
 
     var roleValidate = false;
-    roles.forEach(rolId => {
-      if(rolId == user.rol_id) {
-        roleValidate = true;
-      }
-    });
+
+    if( roles ) {
+      roles.forEach(rolId => {
+        if(rolId == user.rol_id) {
+          roleValidate = true;
+        }
+      });
+    } else {
+      return true;
+    }
 
     return roleValidate;
 
   }
 
+
+  get token(): string {
+    return sessionStorage.getItem('token') || '';
+  }
 }
