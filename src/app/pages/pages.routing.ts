@@ -19,7 +19,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent, data: {'title': "Dashboard" } },
-            { path: 'reports', component: ReportsComponent, data: {'title': "Reports" } }, 
             { path: 'profile', component: ProfileComponent, data: {'title': "Profile" } }, 
             { path: 'message', component: MessageComponent, data: {'title': "Message" } }, 
             { path: 'schedule', component: ScheduleComponent, data: {'title': "Schedule" } }, 
@@ -27,7 +26,7 @@ const routes: Routes = [
             { path: 'subject', component: SubjectComponent, data: {'title': "Subject" } }, 
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
         ],
-        data: { roles: ["1"] }
+        data: { }
     }
 ];
 

@@ -15,7 +15,7 @@ export class BreadcrumbsComponent implements OnDestroy{
   public titleSubs$: Subscription;
 
   constructor( private router: Router) {
-    this.router.events.subscribe(event =>  console.log (event))
+    //this.router.events.subscribe(event =>  console.log (event))
     // this.titleSubs$ = this.getDataRoute().subscribe( ({ title }) => {
     //   this.title = title;
     //   document.title = `Core - ${title}`;

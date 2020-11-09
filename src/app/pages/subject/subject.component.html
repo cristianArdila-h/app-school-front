@@ -26,29 +26,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="bold">Matematicas</td>
-
-                            </tr>
-                            <tr>
-                                <td>español</td>
-
-                            </tr>
-                            <tr>
-                                <td>sociales</td>
-
-                            </tr>
-                            <tr>
-                                <td>Religión</td>
-
-                            </tr>
-                            <tr>
-                                <td>Fisica</td>
-
-                            </tr>
-                            <tr>
-                                <td>Quimica</td>
-
+                            <tr *ngFor="let subject of subjects">
+                                <td (click)="loadGrades(subject)">{{ subject.name }}</td>
                             </tr>
                         </tbody>
 
@@ -59,70 +38,31 @@
 
         <div class="col-xl-9">
             <div class="card white">
-                <div class="card-body">
+                <div *ngIf="subject" class="card-body">
 
-                    <h4 class="header-title">Matematicas</h4>
+                    <h5 class="mb-3">{{ subject.name }}</h5>
 
-                    <table class="table table-centered table-borderless mb-0">
-                        <thead>
-                            <tr>
-                                <th>Actividad</th>
-                                <th>Descripción</th>
-                                <th>Fecha de entrega</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Taller de Algebra</td>
-                                <td>Ejercicios del 12 al 18 del algebra, capitulo xx1.</td>
-                                <td>Nov 04, 2020</td>
-                                <td>
-                                    <!-- Switch-->
-                                    <div>
-                                        <input type="checkbox" id="switch21" checked data-switch="success" />
-                                        <label for="switch21" data-off-label="No" class="mb-0 d-block"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ann C. Thompson</td>
-                                <td>646-473-2057</td>
-                                <td>January 25, 1959</td>
-                                <td>
-                                    <!-- Switch-->
-                                    <div>
-                                        <input type="checkbox" id="switch22" checked data-switch="success" />
-                                        <label for="switch22" data-off-label="No" class="mb-0 d-block"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Paul J. Friend</td>
-                                <td>281-308-0793</td>
-                                <td>September 1, 1939</td>
-                                <td>
-                                    <!-- Switch-->
-                                    <div>
-                                        <input type="checkbox" id="switch23" data-switch="success" />
-                                        <label for="switch23" data-off-label="No" class="mb-0 d-block"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Linda G. Smith</td>
-                                <td>606-253-1207</td>
-                                <td>May 3, 1962</td>
-                                <td>
-                                    <!-- Switch-->
-                                    <div>
-                                        <input type="checkbox" id="switch24" data-switch="success" />
-                                        <label for="switch24" data-off-label="No" class="mb-0 d-block"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+
+                        <table class="table table-centered table-borderless mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Actividad</th>
+                                    <th>Descripción</th>
+                                    <th>Nota</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let grade of grades">
+                                    <td>{{ grade.category_grade.name }}</td>
+                                    <td>{{ grade.descripcion }}</td>
+                                    <td>{{ grade.value }}</td>
+                                    <td>{{ grade.createdAt }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
