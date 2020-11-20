@@ -25,6 +25,7 @@ export class LoginComponent {
 
     this.userService.login(this.loginForm.get('user').value, this.loginForm.get('password').value)
       .subscribe(res => {
+
         if(res.ok === false) {
           this.error = 'Usuario o Contraseña incorrectos. Comprueba los datos y vuelve a intentarlo.';
         } else {

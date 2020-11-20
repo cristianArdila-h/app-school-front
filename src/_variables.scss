@@ -16,17 +16,18 @@ $gray-700: #495057 !default;
 $gray-800: #313a46 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
+$dark:     #181C32 !default;
 
-$blue:    #007bff !default;
+$blue:    #3699FF !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #dc3545 !default;
+$red:     #fa5c7c !default;
 $orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
+$yellow:  #ffbc00 !default;
+$green:   #0acf97 !default;
 $teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+$cyan:    #39afd1 !default;
 
 $primary:       $blue !default;
 $secondary:     $gray-600 !default;
@@ -40,5 +41,7 @@ $dark:          $gray-800 !default;
 $body-color:               $gray-600 !default;
 
 $card-border-color:                 $gray-200 !default;
+$list-group-border-color:           $gray-200 !default;
+$list-group-bg:                     $white !default;
 
 $dropdown-link-color:                    $secondary !default;

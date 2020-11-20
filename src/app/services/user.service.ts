@@ -51,7 +51,7 @@ export class UserService {
 
     if( roles ) {
       roles.forEach(rolId => {
-        if(rolId == user.rol_id) {
+        if(rolId == user.rol) {
           roleValidate = true;
         }
       });
