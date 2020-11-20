@@ -11,22 +11,7 @@ const base_url = environment.base_url;
 
 export class StudentService {
 
-  student:any;
-
   constructor( private http: HttpClient ) { }
-
-  getStudent(idStudent) {
-
-    return this.http.get(`${ base_url }/students/${ idStudent }`, {headers: {'x-token': this.token }})
-    .pipe(
-      map( (resp: any ) => { 
-        if(resp.ok === true) {
-          this.student = resp.student;
-        }
-        return resp;
-      }),
-    );
-  }
 
   getGroupSubjects(idGroup) {
 
@@ -38,9 +23,20 @@ export class StudentService {
     );
   }
 
-  getGradesBySubject(idSubject) {
+  getGradesBySubject(idSubject, idStudent) {
+  
+    return this.http.get(`${ base_url }/grades/gradesByStundetIdAndSubjectId/${ idStudent }/${ idSubject }`, {headers: {'x-token': this.token }})
+    .pipe(
+      map( (resp: any ) => { 
+        return resp;
+      }),
+    );
 
-    return this.http.get(`${ base_url }/grades/gradesByStundetIdAndSubjectId/${ this.student.id }/${ idSubject }`, {headers: {'x-token': this.token }})
+  }
+
+  getDatebook(igGroup, dateInit, dateEnd) {
+  
+    return this.http.get(`${ base_url }/datebook/datebookByGroup/${ igGroup }/${ dateInit }/${ dateEnd }`, {headers: {'x-token': this.token }})
     .pipe(
       map( (resp: any ) => { 
         return resp;

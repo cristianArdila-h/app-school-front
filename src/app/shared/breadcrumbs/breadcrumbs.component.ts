@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs';
 })
 export class BreadcrumbsComponent implements OnDestroy{
 
-  public title: string;
+  @Input() title: string = '';
+
   public titleSubs$: Subscription;
 
   constructor( private router: Router) {
@@ -22,7 +23,7 @@ export class BreadcrumbsComponent implements OnDestroy{
     // });
   }
   ngOnDestroy(): void {
-    this.titleSubs$.unsubscribe();
+    //this.titleSubs$.unsubscribe();
   }
 
   getDataRoute() {

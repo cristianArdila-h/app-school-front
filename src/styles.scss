@@ -2,6 +2,36 @@
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+body{
+    font-family: Poppins, Nunito, "sans-serif";
+    -webkit-font-smoothing: antialiased;
+}
+
+.text-gray-light{
+    color: $gray-500 !important; 
+}
+
+.text-dark{
+    color: $dark !important;
+}
+
+.font-weight-bold {
+    font-weight: 500 !important;
+}
+
+.capital-letter {
+    text-transform: capitalize;
+}
+
+.font-size-h4 {
+    font-size: 1.35rem !important;
+}
+
+//Margenes
+
+.mt-6 {
+    margin-top: 3rem;
+}
 
 .left-side-menu {
 
@@ -15,4 +45,22 @@
     margin: -1.5rem 0 -1.5rem 250px;
     border-left: 5px solid #fafbfe;
     padding: 1.5rem 0 1.5rem 25px;
+}
+
+//Sacar a styke breackcrums
+.title-page{
+    padding-top: 1rem;
+    margin-bottom:1rem;
+}
+
+.breadcrumb{
+    background-color: initial;
+}
+
+
+//Sacar a styke Datebook
+.input-datebook {
+    font-size: 1.4rem;
+    color: $primary;
+    border-color: $primary;
 }

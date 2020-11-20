@@ -18,46 +18,27 @@ export class SubjectComponent implements OnInit {
   grades: any[];
 
   constructor(private userService: UserService
-    , private studentService: StudentService) { 
-
-      if(this.userService.user.rol_id === rols.PARENT) {
-
-        this.studentService.getStudent(this.userService.user.parent.student_id)
-            .subscribe(resp => {
-              this.student = resp.student;
-              console.log('Stunde', this.student, this.student.group_id);
-              this.loadSubjects(this.student.group_id);
-              
-            });
-  
-      } 
-
-      if(this.userService.user.rol_id === rols.STUDENT) {
-
-        this.studentService.getStudent(this.userService.user.student.student_id)
-            .subscribe(stundent => this.student = stundent);
-  
-      }
-
-    }
+    , private studentService: StudentService) {}
 
   ngOnInit(): void {
-
     
-    
+    this.student = this.userService.user;
+    this.loadSubjects(this.student.group_id);
 
   }
 
   loadSubjects(idGroup) {
 
     this.studentService.getGroupSubjects(idGroup)
-      .subscribe( resp => this.subjects = resp.subjectsByGroupId );
+      .subscribe( resp => this.subjects = resp.subjects );
 
   }
 
   loadGrades(subject) {
+
     this.subject = subject;
-    this.studentService.getGradesBySubject(subject.id)
+    console.log(this.subjects  )
+    this.studentService.getGradesBySubject(subject.id, this.student.id)
       .subscribe( resp => {
         this.grades = resp.grades;
         console.log('Grades',  this.grades);

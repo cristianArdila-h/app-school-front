@@ -1,0 +1,62 @@
+<div class="content">
+    <div class="container-fluid">
+        <app-breadcrumbs title="Agenda"></app-breadcrumbs>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="">
+                            <form [formGroup]="datebook">
+                                
+                                <div class="form-row align-items-center">
+                                    <div class="col-auto">
+                                        <input type="date" formControlName="date" class="form-control input-datebook"> 
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button (click)="searchsDatebook('hoy')" class="btn btn-primary btn-lg" type="submit">Hoy</button>
+                                            <button (click)="searchsDatebook('semana')" class="btn btn-primary btn-lg" type="submit">Semana</button>
+                                            <button (click)="searchsDatebook('mes')" class="btn btn-primary btn-lg" type="submit">Mes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-2">Seleccione la fecha que decea consultar.</p>
+                            </form>
+                        </div>
+                    </div> 
+                </div>  
+            </div>
+
+            <div class="col-12" *ngIf="activitys">
+
+                <!-- <div class="card ribbon-box">
+                    <div class="card-body">
+                        <p>Desde: {{ dateInit.toS }} Hatas: {{ dateEnd}}</p>
+                    </div>
+                </div> -->
+
+                <div *ngFor="let activity of activitys" class="card ribbon-box">
+                    <div class="card-body">
+                        <h4>{{ activity.title }}</h4>
+                        <div class="mt-3">
+                            <p><span class="badge badge-success-lighten capital-letter mr-1">{{ activity.group_subject.subject.name }}</span><span class="badge badge-warning-lighten capital-letter">{{ activity.activityType.name }}</span></p>
+                        </div>
+                        <p class="mb-1">Fecha entrega: {{activity.delivery }}</p>
+                        
+                        <div class="mt-4">
+                            <p>{{activity.activity }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+
+            
+        
+
+    </div>
+</div>
+

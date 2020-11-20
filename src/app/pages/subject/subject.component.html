@@ -1,53 +1,52 @@
 <div class="container-fluid">
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                        <li class="breadcrumb-item active">Materias</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Materias</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
+    <app-breadcrumbs title="Notas"></app-breadcrumbs>
     <div class="row">
         <div class="col-xl-3">
-            <div class="card white">
-                <div class="card-body">
-                    <table class="table table-centered table-borderless mb-0">
-                        <thead>
-                            <tr>
-                                <th>Materia</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let subject of subjects">
-                                <td (click)="loadGrades(subject)">{{ subject.name }}</td>
-                            </tr>
-                        </tbody>
 
-                    </table>
+            <div class="card cta-box">
+                <div class="card-body">
+                    <div class="media-body">
+                        <h3 class="m-0 cta-box-title text-primary"><i class="mdi mdi-bookshelf vertical-middle mr-3"></i>Materias</h3>
+                    </div>
                 </div>
+                <!-- end card-body -->
             </div>
+             
+            <div class="card cta-box" style="border: none;">
+                <div *ngFor="let subject of subjects">
+                    <a (click)="loadGrades(subject)" class="list-group-item list-group-item-action capital-letter">
+                        {{ subject.name }}
+                    </a>
+                </div>
+                
+            </div>
+           
         </div>
+    
 
         <div class="col-xl-9">
-            <div class="card white">
-                <div *ngIf="subject" class="card-body">
+            <div *ngIf="subject" class="card cta-box">
+                <div class="card-body">
+                    <div class="media">
+                        <img class="d-flex mr-3 rounded-circle" src="assets/images/users/avatar-10.jpg" alt="Generic placeholder image" height="64">
+                        <div class="media-body">
+                            <h4 class="mt-1 mb-1 capital-letter">{{ subject.name }}</h4>
+                            <p class="font-13">{{ subject.user.name }} {{ subject.user.lastName }}</p>
+                        </div> <!-- end media-body-->
+                    </div>
+                <!-- end card-body -->
+                </div>
+            </div>   
 
-                    <h5 class="mb-3">{{ subject.name }}</h5>
+            <div *ngIf="subject" class="card white">
+               
+
 
                     <div class="table-responsive">
 
                         <table class="table table-centered table-borderless mb-0">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Actividad</th>
                                     <th>Descripción</th>
                                     <th>Nota</th>
                                     <th>Fecha</th>
@@ -55,16 +54,16 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let grade of grades">
-                                    <td>{{ grade.category_grade.name }}</td>
                                     <td>{{ grade.descripcion }}</td>
                                     <td>{{ grade.value }}</td>
                                     <td>{{ grade.createdAt }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    
                     </div>
-                </div>
             </div>
         </div>
+
     </div>
 </div>
