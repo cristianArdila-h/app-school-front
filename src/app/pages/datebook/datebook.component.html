@@ -13,44 +13,113 @@
                                         <input type="date" formControlName="date" class="form-control input-datebook"> 
                                     </div>
                                     <div class="col-auto">
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button (click)="searchsDatebook('hoy')" class="btn btn-primary btn-lg" type="submit">Hoy</button>
-                                            <button (click)="searchsDatebook('semana')" class="btn btn-primary btn-lg" type="submit">Semana</button>
-                                            <button (click)="searchsDatebook('mes')" class="btn btn-primary btn-lg" type="submit">Mes</button>
-                                        </div>
+                                        <button (click)="searchsDatebook('hoy')" class="btn btn-primary btn-lg" type="submit">Buscar</button>
                                     </div>
                                 </div>
                                 <p class="mt-2">Seleccione la fecha que decea consultar.</p>
                             </form>
                         </div>
+                        
+                        <div class="timeline-alt pb-0 pl-3">
+                            <div *ngFor="let activity of activitys" class="timeline-item">
+                                <i class="mdi mdi-circle timeline-icon" [ngStyle]="{'color':  activity.group_subject.subject.color, 'background-color': color(activity.group_subject.subject.color) }"></i>
+                                <div class="timeline-item-info pb-4">
+                                    <h5 class="text-dark font-weight-bold">{{ activity.title }}</h5>
+
+                                    <div class="border-card mt-4">
+                                    
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <h6 class="font-14 text-dark">Fecha de entrega:</h6>
+                                                <p class="text-sm lh-150 text-danger">{{ activity.delivery }}</p>
+                                            </div>
+                                            <div class="col-md-3 text-dark">
+                                                <h6 class="font-14">Asignatura:</h6>
+                                                <p class="text-sm lh-150 capital-letter" [ngStyle]="{'color':  activity.group_subject.subject.color }">{{ activity.group_subject.subject.name }}</p>
+                                            </div>
+                                            <div class="col-md-3 text-dark">
+                                                <h6 class="font-14">Tipo de actividad:</h6>
+                                                <p class="text-sm lh-150 capital-letter text-success">{{ activity.activityType.name }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h6 class="font-14 text-dark">Fecha Creación:</h6>
+                                                <p class="text-sm lh-150 text-info">{{ activity.createdAt | date:'dd/MM/yyyy' }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <hr class="mt-0">
+                                        <h6 class="text-dark font-weight-bold mb-2">Description:</h6>
+                                        <p class="mb-5">{{activity.activity }}</p>
+                                        
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="card mb-1 shadow-none border">
+                                                    <div class="p-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <div class="avatar-sm">
+                                                                    <span class="avatar-title bg-primary-lighten text-primary rounded">
+                                                                        .ZIP
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col pl-0">
+                                                                <a href="javascript:void(0);" class="text-muted font-weight-bold">Hyper-admin-design.zip</a>
+                                                                <p class="mb-0">2.3 MB</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <!-- Button -->
+                                                                <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
+                                                                    <i class="dripicons-download"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col -->
+
+                                            <div class="col-xl-4">
+                                                <div class="card mb-0 shadow-none border">
+                                                    <div class="p-2">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <div class="avatar-sm">
+                                                                    <span class="avatar-title bg-secondary rounded">
+                                                                        .MP4
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col pl-0">
+                                                                <a href="javascript:void(0);" class="text-muted font-weight-bold">Admin-bug-report.mp4</a>
+                                                                <p class="mb-0">7.05 MB</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <!-- Button -->
+                                                                <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
+                                                                    <i class="dripicons-download"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                        
                     </div> 
                 </div>  
             </div>
 
             <div class="col-12" *ngIf="activitys">
 
-                <!-- <div class="card ribbon-box">
-                    <div class="card-body">
-                        <p>Desde: {{ dateInit.toS }} Hatas: {{ dateEnd}}</p>
-                    </div>
-                </div> -->
-
-                <div *ngFor="let activity of activitys" class="card ribbon-box">
-                    <div class="card-body">
-                        <h4>{{ activity.title }}</h4>
-                        <div class="mt-3">
-                            <p><span class="badge badge-success-lighten capital-letter mr-1">{{ activity.group_subject.subject.name }}</span><span class="badge badge-warning-lighten capital-letter">{{ activity.activityType.name }}</span></p>
-                        </div>
-                        <p class="mb-1">Fecha entrega: {{activity.delivery }}</p>
-                        
-                        <div class="mt-4">
-                            <p>{{activity.activity }}</p>
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
-            
+
         </div>
 
 

@@ -88,5 +88,10 @@ export class DatebookComponent implements OnInit {
     return dateFormated;
   }
 
+  color(color) {
+
+    return color+'50';
+  }
+
 
 }
