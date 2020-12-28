@@ -82,4 +82,13 @@ body {
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     align-items: flex-start;
+
+}
+
+.border-card {
+
+    padding: 1rem;
+    border: 1px solid $gray-200;
+    border-radius: 0.25rem;
+
 }
