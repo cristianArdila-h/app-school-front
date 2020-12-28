@@ -3,74 +3,104 @@
 
     <app-breadcrumbs title="Perfil"></app-breadcrumbs>
 
-    <div class="row">
-        <div class="col-4">
+    <div class="row panel-container">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" *ngIf="user.rol == '3'">
             <div class="card">
                 <div class="card-body">
                     <div class="media">
                         <img class="d-flex align-self-start rounded mr-3" src="assets/images/users/avatar-5.jpg" alt="Dominic Keller" height="70">
                         <div class="media-body">
-                            <p class="mt-1 mb-0 text-dark font-size-h4">{{ user.name }} {{ user.lastname }}</p>
+                            <p class="mt-1 mb-0 text-dark font-size-h4">{{ student.name }} {{ student.lastname }}</p>
                             <span class="mb-1 mt-1 text-gray-light">Estudiante</span>
                         </div>
                     </div>
                     <div class="mt-4">
-            
-                        <p><span class="text-dark">Telefono :</span> <span class="ml-2">{{ user.phone }}</span></p>
 
-                        <p><span class="text-dark">Email :</span> <span class="ml-2">{{ user.email }}</span></p>
+                        <p><span class="text-dark">Telefono :</span> <span class="ml-2">{{ student.phone }}</span></p>
 
-                        <p><span class="text-dark">Movil :</span> <span class="ml-2">{{ user.movil }}</span></p>
+                        <p><span class="text-dark">Email :</span> <span class="ml-2">{{ student.email }}</span></p>
 
-                        <p><span class="text-dark">Dirrección :</span> <span class="ml-2">{{ user.address }}</span></p>
+                        <p><span class="text-dark">Movil :</span> <span class="ml-2">{{ student.movil }}</span></p>
 
-                        <p><span class="text-dark">Fecha de nacimiento :</span> <span class="ml-2">{{ user.birthdate }}</span></p>
+                        <p><span class="text-dark">Dirrección :</span> <span class="ml-2">{{ student.address }}</span></p>
 
-                        <p><span class="text-dark">Tipo de documento :</span> <span class="ml-2">{{ user.documentType }}</span></p>
+                        <p><span class="text-dark">Fecha de nacimiento :</span> <span class="ml-2">{{ student.birthdate }}</span></p>
 
-                        <p><span class="text-dark">Numero de documento :</span> <span class="ml-2">{{ user.documentNumber }}</span></p>
+                        <p><span class="text-dark">Tipo de documento :</span> <span class="ml-2">{{ student.documentType }}</span></p>
+
+                        <p><span class="text-dark">No° de documento :</span> <span class="ml-2">{{ student.documentNumber }}</span></p>
 
                     </div>
-            
+
                 </div>
                 <!-- end card-body -->
             </div>
             <!-- end card -->
 
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
-                <div class="card-body">
-                    <div class="media">
-                        <img class="d-flex rounded mr-3" src="assets/images/users/avatar-1.jpg" alt="Dominic Keller" height="70">
-                        <div class="media-body">
-                            <p class="mt-1 mb-0 text-dark font-size-h4">Camilo Lopez</p>
-                            <span class="mb-1 mt-1 text-gray-light">Acudiente</span>
+                <form autocomplete="off" [formGroup]="userForm" (ngSubmit)="updateUser()">
+                    <div class="card-body">
+                        <div class="media">
+                            <img class="d-flex rounded mr-3" src="assets/images/users/avatar-1.jpg" alt="Dominic Keller" height="70">
+                            <div class="media-body">
+                                <p class="mt-1 mb-0 text-dark font-size-h4">Camilo Lopez</p>
+                                <span *ngIf="user.rol == '3'" class="mb-1 mt-1 text-gray-light">Acudiente</span>
+                                <span *ngIf="user.rol == '2'" class="mb-1 mt-1 text-gray-light">Estudiante</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+
+                            <p><span class="text-dark">Telefono :</span>
+                                <span class="ml-2" *ngIf="!usrIsVisible">{{ user.phone }}</span>
+                                <input type="number" id="_telefono" *ngIf="usrIsVisible" formControlName="_telefono" class="form-control" [class.is-invalid]="telefonoNoValido">
+                            </p>
+
+                            <p><span class="text-dark">Email :</span> <span class="ml-2">{{ user.email }}</span></p>
+
+                            <p><span class="text-dark">Movil :</span>
+                                <span class="ml-2" *ngIf="!usrIsVisible">{{ user.movil }}</span>
+                                <input type="number" id="_movil" *ngIf="usrIsVisible" formControlName="_movil" class="form-control" [class.is-invalid]="movilNoValido">
+                            </p>
+
+                            <p>
+                                <span class="text-dark">Dirrección :</span>
+                                <span class="ml-2" *ngIf="!usrIsVisible">{{ user.address }}</span>
+                                <input type="text" id="_direccion" *ngIf="usrIsVisible" formControlName="_direccion" class="form-control" [class.is-invalid]="direccionNoValido">
+                            </p>
+
+                            <p><span class="text-dark">Tipo de documento :</span> <span class="ml-2">{{ user.documentType }}</span></p>
+
+                            <p><span class="text-dark">No° de documento :</span> <span class="ml-2">{{ user.documentNumber }}</span></p>
+
                         </div>
                     </div>
-                    <div class="mt-4">
-            
-                        <p><span class="text-dark">Telefono :</span> <span class="ml-2">{{ user.phone }}</span></p>
 
-                        <p><span class="text-dark">Email :</span> <span class="ml-2">{{ user.email }}</span></p>
-
-                        <p><span class="text-dark">Movil :</span> <span class="ml-2">{{ user.movil }}</span></p>
-
-                        <p><span class="text-dark">Dirrección :</span> <span class="ml-2">{{ user.address }}</span></p>
-
-                        <p><span class="text-dark">Numero de documento :</span> <span class="ml-2">{{ user.documentNumber }}</span></p>
-
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" *ngIf="!usrIsVisible" (click)="isVisible(true)" class="btn btn-outline-success btn-block">Modificar</button>
+                        </div>
+                        <div class="col-6" *ngIf="usrIsVisible">
+                            <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
+                        </div>
+                        <div class="col-6" *ngIf="usrIsVisible"><button type="button" (click)="isVisible(false)" class="btn btn-outline-danger btn-block ff-bold">Cancelar</button></div>
                     </div>
-                </div>
+                </form>
                 <!-- end card-body -->
             </div>
             <!-- end card -->
 
         </div>
-        <div class="col-4">
-            <div class="card text-center">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="card text-center" *ngFor="let subject of subjects">
                 <div class="card-body">
-                    
+                    <div class="media">
+                        <div class="media-body">
+                            <p class="mt-1 mb-0 text-dark font-size-h4">{{subject.name}}</p>
+                            <span class="mb-1 mt-1 text-gray-light">{{ subject.user.name }} {{ subject.user.lastName }}</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- end card-body -->
             </div>
