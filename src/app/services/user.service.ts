@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from "../../environments/environment";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
@@ -16,6 +16,18 @@ export class UserService {
 
   constructor( private http: HttpClient ) { }
 
+
+  getQuery( query: string ) {
+    const url = `${ base_url }` + query;
+
+    const headers = new HttpHeaders ({
+      'x-token': this.token
+    });
+
+    return this.http.get(url, { headers });
+
+  }
+
   login(email, password) {
 
     const body = { email, password };
@@ -30,19 +42,33 @@ export class UserService {
       }),
     );
   }
-
+  updateUser(userObj){
+   
+    return this.http.post(`${ base_url }/users/${this.user.id}`, userObj)
+    .pipe(
+      map( (resp: any ) => { 
+        if(resp.ok === true) {
+         console.log(resp);
+        }
+        return resp;
+      }),
+    );
+  }
 
   validarToken(roles:any) : Observable<boolean> {
-    return this.http.get(`${ base_url }/auth`, {headers: {'x-token': this.token }})
+    return this.getQuery(`/auth`)
     .pipe(
       map( (resp: any ) => { 
         console.log('Entra', resp, 'roles', roles)
-
         this.user = resp.user;
+
         return this.validateRol (roles, resp.user);
       }),
       catchError( error => of(false) )
     );
+  }
+  getStudent(id: string){
+    return this.getQuery(`/users/${id}`);
   }
 
   validateRol(roles:any[], user ) {

@@ -1,17 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
-
-body{
+body {
     font-family: Poppins, Nunito, "sans-serif";
     -webkit-font-smoothing: antialiased;
 }
 
-.text-gray-light{
-    color: $gray-500 !important; 
+.text-gray-light {
+    color: $gray-500 !important;
 }
 
-.text-dark{
+.text-dark {
     color: $dark !important;
 }
 
@@ -28,18 +28,17 @@ body{
 }
 
 //Margenes
-
 .mt-6 {
     margin-top: 3rem;
 }
 
 .left-side-menu {
-
     background-color: $dark !important;
-
 }
 
-.arrow-none:after{display:none}
+.arrow-none:after {
+    display: none
+}
 
 .page-aside-right {
     margin: -1.5rem 0 -1.5rem 250px;
@@ -48,19 +47,39 @@ body{
 }
 
 //Sacar a styke breackcrums
-.title-page{
+.title-page {
     padding-top: 1rem;
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
 }
 
-.breadcrumb{
+.breadcrumb {
     background-color: initial;
 }
-
 
 //Sacar a styke Datebook
 .input-datebook {
     font-size: 1.4rem;
     color: $primary;
     border-color: $primary;
+}
+
+.panel-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
 }

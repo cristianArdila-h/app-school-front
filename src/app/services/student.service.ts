@@ -42,9 +42,10 @@ export class StudentService {
         return resp;
       }),
     );
-
   }
+  
 
+// /groupSubject/subjectsByGroupId/2
 
   get token(): string {
     return sessionStorage.getItem('token') || '';
