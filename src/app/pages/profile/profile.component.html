@@ -4,31 +4,33 @@
     <app-breadcrumbs title="Perfil"></app-breadcrumbs>
 
     <div class="row panel-container">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4" *ngIf="user.rol == '3'">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
             <div class="card">
                 <div class="card-body">
                     <div class="media">
                         <img class="d-flex align-self-start rounded mr-3" src="assets/images/users/avatar-5.jpg" alt="Dominic Keller" height="70">
                         <div class="media-body">
-                            <p class="mt-1 mb-0 text-dark font-size-h4">{{ student.name }} {{ student.lastname }}</p>
-                            <span class="mb-1 mt-1 text-gray-light">Estudiante</span>
+                            <p class="mt-1 mb-0 text-dark font-size-h4">{{ parent.name }} {{ parent.lastname }}</p>
+
+                            <span *ngIf="user.rol == '2'" class="mb-1 mt-1 text-gray-light">Acudiente</span>
+                            <span *ngIf="user.rol == '3'" class="mb-1 mt-1 text-gray-light">Estudiante</span>
                         </div>
                     </div>
                     <div class="mt-4">
 
-                        <p><span class="text-dark">Telefono :</span> <span class="ml-2">{{ student.phone }}</span></p>
+                        <p><span class="text-dark">Telefono :</span> <span class="ml-2">{{ parent.phone }}</span></p>
 
-                        <p><span class="text-dark">Email :</span> <span class="ml-2">{{ student.email }}</span></p>
+                        <p><span class="text-dark">Email :</span> <span class="ml-2">{{ parent.email }}</span></p>
 
-                        <p><span class="text-dark">Movil :</span> <span class="ml-2">{{ student.movil }}</span></p>
+                        <p><span class="text-dark">Movil :</span> <span class="ml-2">{{ parent.movil }}</span></p>
 
-                        <p><span class="text-dark">Dirrección :</span> <span class="ml-2">{{ student.address }}</span></p>
+                        <p><span class="text-dark">Dirrección :</span> <span class="ml-2">{{ parent.address }}</span></p>
 
-                        <p><span class="text-dark">Fecha de nacimiento :</span> <span class="ml-2">{{ student.birthdate }}</span></p>
+                        <p><span class="text-dark">Fecha de nacimiento :</span> <span class="ml-2">{{ parent.birthdate }}</span></p>
 
-                        <p><span class="text-dark">Tipo de documento :</span> <span class="ml-2">{{ student.documentType }}</span></p>
+                        <p><span class="text-dark">Tipo de documento :</span> <span class="ml-2">{{ parent.documentType }}</span></p>
 
-                        <p><span class="text-dark">No° de documento :</span> <span class="ml-2">{{ student.documentNumber }}</span></p>
+                        <p><span class="text-dark">No° de documento :</span> <span class="ml-2">{{ parent.documentNumber }}</span></p>
 
                     </div>
 
@@ -77,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row p-2">
                         <div class="col-12">
                             <button type="button" *ngIf="!usrIsVisible" (click)="isVisible(true)" class="btn btn-outline-success btn-block">Modificar</button>
                         </div>
@@ -106,8 +108,8 @@
             </div>
             <!-- end card -->
 
-    </div>
-    <!-- end row-->
+        </div>
+        <!-- end row-->
 
-</div>
-<!-- container -->
+    </div>
+    <!-- container -->

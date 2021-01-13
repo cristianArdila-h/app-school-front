@@ -10,10 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit {
 
   public user: any;
-  public student: any;
+  public parent: any;
   public subjects: any;
   public userForm: FormGroup;
   public usrIsVisible: boolean;
+  
 
   constructor(private userService: UserService, 
               private studentService: StudentService,
@@ -26,15 +27,24 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.user.rol === '3') {
-      this.userService.getStudent(this.user.student_id).subscribe((resp: any) => {
-        this.student = resp.user;
-        this.getSubjet(this.student.group_id);
+    switch (this.user.rol) {
+      case '3':
+         this.userService.getUser(this.user.student_id).subscribe((resp: any) => {
+        this.parent = resp.user;
+        this.getSubjet(this.parent.group_id);
       });
-    } else {
-      this.getSubjet(this.user.group_id);
+        break;
+      case '2':
+        this.userService.getUser(this.user.parent_id).subscribe((resp: any) => {
+        this.parent = resp.user;       
+      });
+        this.getSubjet(this.user.group_id);
+        break;
+    
+      default:
+        this.getSubjet(this.user.group_id);
+        break;
     }
-
   }
 
   crearFormulario() {

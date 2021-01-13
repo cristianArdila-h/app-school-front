@@ -67,8 +67,11 @@ export class UserService {
       catchError( error => of(false) )
     );
   }
-  getStudent(id: string){
+  getUser(id: string){
     return this.getQuery(`/users/${id}`);
+  }
+  getUsers(){
+    return this.getQuery(`/users`);
   }
 
   validateRol(roles:any[], user ) {

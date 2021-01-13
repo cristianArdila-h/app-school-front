@@ -11,6 +11,7 @@ import { MessageComponent } from './message/message.component';
 import { SubjectComponent } from './subject/subject.component';
 import { DatebookComponent } from './datebook/datebook.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdmUserComponent } from './adm-user/adm-user.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ProfileComponent,
   MessageComponent,
   SubjectComponent,
-  DatebookComponent
+  DatebookComponent,
+  AdmUserComponent
 ],
 exports:[
   PagesComponent

@@ -1,0 +1,100 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <app-breadcrumbs title="Administrador de usuarios"></app-breadcrumbs>
+    <div class="row panel-container">
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="text-dark">
+                            <tr>
+                                <th scope="col" class="hidden-column">ID</th>
+                                <!-- <th scope="col" class="hidden-column">Usuario</th> -->
+                                <th scope="col">Nombre</th>
+                                <th scope="col" class="hidden-column">Apellido</th>
+                                <th scope="col" class="hidden-column">Tipo</th>
+                                <th scope="col" class="hidden-column">Grupo</th>
+
+                                <th scope="col">Opc.</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-light">
+                            <tr *ngFor="let user of usersList">
+                                <th scope="row" class="hidden-column hidden-column-usr">{{user.id}}</th>
+                                <!-- <td class="hidden-column">estudiante@gmail.com</td> -->
+                                <td>{{user.name}}</td>
+                                <td class="hidden-column">{{user.lastname}}</td>
+                                <td class="hidden-column" [ngSwitch]="user.rol">
+
+                                    <p *ngSwitchCase="1">Administrador</p>
+                                    <p *ngSwitchCase="2">Estudiante</p>
+                                    <p *ngSwitchCase="3">Acudiente</p>
+                                    <p *ngSwitchCase="4">Profesor</p>
+                                </td>
+                                <td class="hidden-column">{{user.group_id}}</td>
+                                <td><i Class="dripicons-gear" (click)="updateUser()"></i></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <button type="button" class="btn btn-outline-secondary btn-block ff-bold" (click)="createUser()">
+                                     Agregar nuevo
+                                </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end card body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="mt-4">
+                        <p>
+                            <span class="text-dark">Nombres:</span>
+                            <input type="number" id="_name" formControlName="_name" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Apellidos:</span>
+                            <input type="number" id="_lastname" formControlName="_lastname" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Documento:</span>
+                            <input type="number" id="_documentNumber" formControlName="_documentNumber" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Correo:</span>
+                            <input type="number" id="_email" formControlName="_email" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Telefono:</span>
+                            <input type="number" id="_phone" formControlName="_phone" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Celular:</span>
+                            <input type="number" id="_movil" formControlName="_movil" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">Dirección:</span>
+                            <input type="number" id="_address" formControlName="_address" class="form-control" [class.is-invalid]=""></p>
+                        <p><span class="text-dark">rol:</span>
+                            <select id="_forma_entrega" class="form-control" formControlName="_rol" [class.is-invalid]="">
+                                    <option value="" selected>seleccione</option>
+                                    <option value="4">Profesor</option>
+                                    <option value="2">Estudiante</option>
+                                    <option value="3">Acudiente</option>
+                        </select>
+                        </p>
+                        <p><span class="text-dark">Contraseña:</span>
+                            <input type="password" class="form-control" id="_password" placeholder="Contraseña">
+                        </p>
+
+
+
+
+                    </div>
+
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+
+        </div>
+    </div>
+</div>
+<!-- container -->
